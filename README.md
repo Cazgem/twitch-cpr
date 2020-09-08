@@ -3,7 +3,7 @@
 Twitch-CPR is meant to act as an extension to tmi.js to allow for the automated pausing/unpausing of channel point rewards.
 
 To find the separate Oauth and SHA keys:
-- Visit https://www.twitch.tv/popout/<username>/reward-queue as the account you wish to authorize for these actions.
+- Visit `https://www.twitch.tv/popout/<username>/reward-queue` as the account you wish to authorize for these actions.
 - Navigate to a reward.
 - Open the browser console.
 - Look at Network Activity, and click the Pause Redemptions Slider at the top-left of the page.
@@ -11,7 +11,7 @@ To find the separate Oauth and SHA keys:
 - Grab your Client-ID and Authorization under Headers while you're here.
 - Under `OperationName -> Extentions -> PersistedQuery` you can find sha256Hash. Grab this for your SHA key.
 
-Then, `OperationName -> Variables-> Input-> RewardID` gives you the individual RewardID (unless you've written a script for it here)
+Then, `OperationName -> Variables -> Input -> RewardID` gives you the individual RewardID (unless you've written a script for it here)
 
 ## Implementation
 
