@@ -2,24 +2,27 @@
 
 Twitch-CPR is meant to act as an extension to tmi.js to allow for the automated pausing/unpausing of channel point rewards.
 
-To find the separate Oauth and Sha key, visit https://www.twitch.tv/popout/username/reward-queue as the account you wish to authorize for these actions, navigate to a reward, and open the browser console.
+To find the separate Oauth and SHA keys:
+- Visit https://www.twitch.tv/popout/<username>/reward-queue as the account you wish to authorize for these actions.
+- Navigate to a reward.
+- Open the browser console.
+- Look at Network Activity, and click the Pause Redemptions Slider at the top-left of the page.
+- The Network Activity you are looking for is under "gql".
+- Grab your Client-ID and Authorization under Headers while you're here.
+- Under `OperationName -> Extentions -> PersistedQuery` you can find sha256Hash. Grab this for your SHA key.
 
-Look at Network Activity, and click the Pause Redemptions Slider. The Network Activity you are looking for is under "gql".
+Then, `OperationName -> Variables-> Input-> RewardID` gives you the individual RewardID (unless you've written a script for it here)
 
-Grab your Client-ID and Authorization under Headers while you're here. Then, under OperationName->Extentions->PersistedQuery you can find sha256Hash. Grab this for your Sha key.
+## Implementation
 
-Then, OperationName->Variables-> Input-> RewardID for the individual RewardID (unless you've written a script for it here)
-
-IMPLEMENTATION
-
-INCLUDES
-<code>
+### Includes
+```javascript
 const tmi = require('tmi.js');
 const config = require('./config'); // Great to store variables safely
 const twitchCPR = require(`twitch-cpr`);
-</code>
-BUILDING THE CONFIG
-
+```
+### Building the Config
+```javascript
 let twitchCPRopts = {
             client_id: config.identity.client_id, // REQUIRED!
             channelID: context[`room-id`], // REQUIRED!
@@ -27,20 +30,30 @@ let twitchCPRopts = {
             sha: config.httpSha256Hash, // REQUIRED! See Github for how to generate
             debug: `false` // Switch to full to allow full debug mode, or true for just the reward ID's (Full Debug not recommended for production use)
         }
+```
 
-PAUSE A REWARD
+### Pause a Reward
+```javascript
 twitchCPR.toggle(rewardID, `true`, twitchCPRopts);
+```
 
-UNPAUSE A REWARD
+### Unause a Reward
+```javascript
 twitchCPR.toggle(rewardID, `false`, twitchCPRopts);
+```
 
-DEBUGGING
+## Debugging
 
-OFF
+### Off
+```javascript
 twitchCPR.toggle(rewardID, `true`, twitchCPRopts, false);
-
-LIGHT (Prints Reward IDs to Console)
+```
+### Light - Prints Reward IDs to Console
+```javascript
 twitchCPR.toggle(rewardID, `true`, twitchCPRopts, true);
+```
 
-FULL (Prints entire handshake, exchange, and data dump from the HTTP POST)
+### Full - Prints entire handshake, exchange, and data dump from the HTTP POST
+```javascript
 twitchCPR.toggle(rewardID, `true`, twitchCPRopts, full);
+```
