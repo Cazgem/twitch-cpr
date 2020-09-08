@@ -1,4 +1,13 @@
-module.exports = (rewardID, isPaused, twitchCPRopts) => {
+// var Classes = Object.create(null);
+// /**
+//  * Herpaderp!
+//  * @param {string} rewardID
+//  * @param {string} isPaused
+//  * @param {array} twitchCPRopts
+//  * 
+//  * @public
+//  */
+exports.toggle = function toggle(rewardID, isPaused, twitchCPRopts) {
     const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
     const client_id = twitchCPRopts.client_id;
     const channelID = twitchCPRopts.channelID;
@@ -46,4 +55,12 @@ module.exports = (rewardID, isPaused, twitchCPRopts) => {
     xhr.setRequestHeader("Postman-Token", `be9142ed-85c1-4a9c-b014-811d3c8bf9a3,6ff3ffc8-8841-46cb-bbd7-7690b355440e`);
     xhr.setRequestHeader("cache-control", "no-cache");
     xhr.send(data2);
-}
+};
+exports.listen = function listen(twitchCPRopts) {
+    console.log(twitchCPRopts.channelID);
+};
+
+// Store to prevent invoking require()
+// Classes[className] = Class;
+
+// return Class;
