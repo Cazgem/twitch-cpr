@@ -13,7 +13,7 @@ Then, OperationName->Variables-> Input-> RewardID for the individual RewardID (u
 IMPLEMENTATION
 
 INCLUDES
-<code?
+<code>
 const tmi = require('tmi.js');
 const config = require('./config'); // Great to store variables safely
 const twitchCPR = require(`twitch-cpr`);
