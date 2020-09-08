@@ -11,7 +11,7 @@ To find the separate Oauth and SHA keys:
 - Grab your Client-ID and Authorization under Headers while you're here.
 - Under `OperationName -> Extentions -> PersistedQuery` you can find sha256Hash. Grab this for your SHA key.
 
-Then, `OperationName -> Variables-> Input-> RewardID` gives you the individual RewardID (unless you've written a script for it here)
+Then, `OperationName -> Variables -> Input -> RewardID` gives you the individual RewardID (unless you've written a script for it here)
 
 ## Implementation
 
