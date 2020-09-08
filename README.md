@@ -29,18 +29,18 @@ let twitchCPRopts = {
         }
 
 PAUSE A REWARD
-twitchCPR(rewardID, `true`, twitchCPRopts);
+twitchCPR.toggle(rewardID, `true`, twitchCPRopts);
 
 UNPAUSE A REWARD
-twitchCPR(rewardID, `false`, twitchCPRopts);
+twitchCPR.toggle(rewardID, `false`, twitchCPRopts);
 
 DEBUGGING
 
 OFF
-twitchCPR(rewardID, `true`, twitchCPRopts, false);
+twitchCPR.toggle(rewardID, `true`, twitchCPRopts, false);
 
 LIGHT (Prints Reward IDs to Console)
-twitchCPR(rewardID, `true`, twitchCPRopts, true);
+twitchCPR.toggle(rewardID, `true`, twitchCPRopts, true);
 
 FULL (Prints entire handshake, exchange, and data dump from the HTTP POST)
-twitchCPR(rewardID, `true`, twitchCPRopts, full);
+twitchCPR.toggle(rewardID, `true`, twitchCPRopts, full);
