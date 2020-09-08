@@ -1,10 +1,8 @@
 module.exports = (rewardID, isPaused, twitchCPRopts) => {
-
     const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
     const client_id = twitchCPRopts.client_id;
     const channelID = twitchCPRopts.channelID;
     const Authorization = twitchCPRopts.authorization;
-    const Sha = twitchCPRopts.sha;
     var data2 = `[
     {
         "operationName": "PauseCustomRewardRedemptions",
@@ -27,6 +25,8 @@ module.exports = (rewardID, isPaused, twitchCPRopts) => {
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
             if (twitchCPRopts.debug === `true`) {
+                console.log(`Reward ID: ${rewardID}`);
+            } else if (twitchCPRopts.debug === `full`) {
                 console.log(this.responseText);
             }
         }
