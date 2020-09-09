@@ -92,5 +92,4 @@ client.on('message', (channel, context, message, self) => {
 
     }
 
-}
 });
