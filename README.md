@@ -11,22 +11,23 @@ To find the separate Oauth and SHA keys:
 - Grab your Client-ID and Authorization under Headers while you're here.
 - Under `OperationName -> Extentions -> PersistedQuery` you can find sha256Hash. Grab this for your SHA key.
 
-Then, `OperationName -> Variables -> Input -> RewardID` gives you the individual RewardID (unless you've written a script for it here)
+Then run the `twitchCPR.list` function (details below) to get your individual reward IDs.
 
 ## Implementation
 
 ### Includes
 ```javascript
-const tmi = require('tmi.js');
-const config = require('./config'); // Great to store variables safely
 const twitchCPR = require(`twitch-cpr`);
+
+const tmi = require('tmi.js'); // Recommended for chat functionality, though not strictly necessary to function.
+const config = require('./config'); // Great to store variables safely
 ```
 ### Building the Config
 ```javascript
 let twitchCPRopts = {
             client_id: config.identity.client_id, // REQUIRED!
             channelID: context[`room-id`], // REQUIRED!
-            authorization: config.identity.authorization, // REQUIRED! OAUTH 456adwn3qf93yufbnojhnbe This may be different than your usual OAUTH Pass. Info on Github.
+            authorization: config.identity.authorization, // REQUIRED! "OAUTH ********************" This may be different than your usual OAUTH Pass. Info on Github.
             sha: config.httpSha256Hash, // REQUIRED! See Github for how to generate
             debug: `false` // Switch to full to allow full debug mode, or true for just the reward ID's (Full Debug not recommended for production use)
         }
@@ -40,6 +41,11 @@ twitchCPR.toggle(rewardID, `true`, twitchCPRopts);
 ### Unause a Reward
 ```javascript
 twitchCPR.toggle(rewardID, `false`, twitchCPRopts);
+```
+
+### List Reward IDs
+```javascript
+twitchCPR.list(twitchCPRopts);
 ```
 
 ## Debugging
