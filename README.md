@@ -39,7 +39,7 @@ let twitchCPRopts = {
 twitchCPR.toggle(rewardID, `true`, twitchCPRopts);
 ```
 
-### Unause a Reward
+### Unpause a Reward
 ```javascript
 twitchCPR.toggle(rewardID, `false`, twitchCPRopts);
 ```
