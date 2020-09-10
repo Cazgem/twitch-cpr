@@ -36,6 +36,7 @@ client.on('message', (channel, context, message, self) => {
         let twitchCPRopts = {
             client_id: config.identity.client_id, // REQUIRED!
             channelID: context[`room-id`], // REQUIRED!
+            channel_name: config.default.streamer, // REQUIRED!
             authorization: config.identity.authorization, // REQUIRED! OAUTH 456adwn3qf93yufbnojhnbe This may be different than your usual OAUTH Pass. Info on Github.
             sha: config.httpSha256Hash, // REQUIRED! See Github for how to generate
             debug: `false` // Switch to full to allow full debug mode, or true for just the reward ID's (Full Debug not recommended for production use)
