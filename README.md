@@ -3,6 +3,7 @@
 Twitch-CPR is meant to act as an extension to tmi.js to allow for the automated pausing/unpausing of channel point rewards. It can also run as a stand-alone console application if you wish.
 
 ##Installation
+
 `npm install twitch-cpr`
 
 To find Special Oauth keys:
