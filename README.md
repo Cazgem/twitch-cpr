@@ -31,9 +31,9 @@ const config = require('./config'); // Great to store variables safely
 ### Building the Config
 ```javascript
 let twitchCPRopts = {
-            channelID: context[`room-id`], // REQUIRED!
-            client_id: config.identity.client_id,  // REQUIRED!
-            channel_name: config.default.streamer, // REQUIRED!
+            channelID: context[`room-id`], // REQUIRED
+            client_id: config.identity.client_id,  // REQUIRED
+            channel_name: config.default.streamer, // REQUIRED
             authorization: config.identity.authorization, // REQUIRED! "OAUTH ********************" This may WILL BE different than your usual OAUTH Pass. Info on Github.
             debug: `false` // OPTIONAL: Switch to full to allow full debug mode, or true for just the reward ID's (Full Debug not recommended for production use)
         }
