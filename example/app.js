@@ -38,7 +38,6 @@ client.on('message', (channel, context, message, self) => {
             channelID: context[`room-id`], // REQUIRED!
             channel_name: config.default.streamer, // REQUIRED!
             authorization: config.identity.authorization, // REQUIRED! OAUTH 456adwn3qf93yufbnojhnbe This may be different than your usual OAUTH Pass. Info on Github.
-            sha: config.httpSha256Hash, // REQUIRED! See Github for how to generate
             debug: `false` // Switch to full to allow full debug mode, or true for just the reward ID's (Full Debug not recommended for production use)
         }
         let game = `minecraft`;
@@ -47,7 +46,7 @@ client.on('message', (channel, context, message, self) => {
             if (err) throw err;
             Object.keys(result).forEach(function (key) {
                 if (cazgemRewards) {
-                    twitchCPR(result[key].rewardID, `true`, twitchCPRopts); // Turn OFF rewards for games not being played.
+                    twitchCPR.pause(result[key].rewardID, `true`, twitchCPRopts); // Turn OFF rewards for games not being played.
                 }
             });
         });
@@ -56,7 +55,7 @@ client.on('message', (channel, context, message, self) => {
             if (err) throw err;
             Object.keys(result).forEach(function (key) {
                 if (cazgemRewards2) {
-                    twitchCPR(result[key].rewardID, `false`, twitchCPRopts); // Turn ON rewards for games being played.
+                    twitchCPR.unpause(result[key].rewardID, twitchCPRopts); // Turn ON rewards for games being played.
                 }
             });
         });
@@ -64,9 +63,9 @@ client.on('message', (channel, context, message, self) => {
     } else if (cname === `citiesskylines`) {
         let twitchCPRopts = {
             client_id: config.identity.client_id, // wrer45dsdewn3qffbnojbe This will be different than your usual client ID. Info on Github.
+            channel_name: config.default.streamer,
             channelID: context[`room-id`], //context['room-id'] works here!
             authorization: config.identity.authorization, // OAUTH 456adwn3qf93yufbnojhnbe This will be different than your usual OAUTH Pass. Info on Github.
-            sha: config.httpSha256Hash,
             debug: `true`
         }
         let game = `minecraft`;
@@ -75,7 +74,7 @@ client.on('message', (channel, context, message, self) => {
             if (err) throw err;
             Object.keys(result).forEach(function (key) {
                 if (cazgemRewards) {
-                    twitchCPR(result[key].rewardID, `true`, twitchCPRopts); // Turn OFF rewards for games not being played.
+                    twitchCPR.pause(result[key].rewardID, twitchCPRopts); // Turn OFF rewards for games not being played.
                 }
             });
         });
@@ -84,7 +83,7 @@ client.on('message', (channel, context, message, self) => {
             if (err) throw err;
             Object.keys(result).forEach(function (key) {
                 if (cazgemRewards2) {
-                    twitchCPR(result[key].rewardID, `false`, twitchCPRopts); // Turn ON rewards for games being played.
+                    twitchCPR.unpause(result[key].rewardID, `false`, twitchCPRopts); // Turn ON rewards for games being played.
                 }
             });
         });

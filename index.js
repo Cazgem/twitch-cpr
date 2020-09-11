@@ -1,9 +1,27 @@
 module.exports = {
     toggle: function (rewardID, isPaused, twitchCPRopts) {
+        const pause = isPaused;
+        if ((pause === `on`) || (pause === `enable`) || (pause === `enabled`)) {
+            paused = `false`;
+        } else if ((pause === `off`) || (pause === `disable`) || (pause === `disabled`)) {
+            paused = `true`;
+        }
         const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
         const client_id = twitchCPRopts.client_id;
+        if (client_id === ``) {
+            const client_id = `kimne78kx3ncx6brgo4mv6wki5h1ko`;
+        } else {
+            const client_id = twitchCPRopts.client_id;
+        }
         const channelID = twitchCPRopts.channelID;
+        const channel_name = twitchCPRopts.channel_name;
         const authorization = twitchCPRopts.authorization;
+        const debug = twitchCPRopts.debug;
+        if (debug === ``) {
+            const debug = `false`;
+        } else {
+            const debug = twitchCPRopts.debug;
+        }
         var data = `[
     {
         "operationName": "PauseCustomRewardRedemptions",
@@ -11,22 +29,136 @@ module.exports = {
             "input": {
                 "channelID": "${channelID}",
                 "rewardID": "${rewardID}",
-                "isPaused": ${isPaused}
+                "isPaused": ${paused}
             }
         },
         "extensions": {
             "persistedQuery": {
                 "version": 1,
-                "sha256Hash": "${twitchCPRopts.sha}"            }
+                "sha256Hash": "0cf84624f984ef052db18bedb2e034a5c1017dda9d065bb0f6978c3128fa9b99"            }
         }
     }
 ]`;
         var xhr = new XMLHttpRequest();
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === 4) {
-                if (twitchCPRopts.debug === `true`) {
+                if (debug === `true`) {
+                    console.log(`Is Paused: ${paused}`);
                     console.log(`Reward ID: ${rewardID}`);
-                } else if (twitchCPRopts.debug === `full`) {
+                    console.log(`Client ID: ${client_id}`);
+                    console.log(`Channel ID: ${channelID}`);
+                    console.log(`Channel Name: ${channel_name}`);
+                    console.log(`Authentication: ${authorization}`);
+                    console.log(`Raw: ${data}`);
+                } else if (debug === `full`) {
+                    console.log(`Raw: ${data}`);
+                    console.log(`----------------------------`);
+                    console.log(this.responseText);
+                }
+            }
+        });
+        this.xhrGET(xhr, data, client_id, authorization);
+    },
+    pause: function (rewardID, twitchCPRopts) {
+        const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+        const client_id = twitchCPRopts.client_id;
+        if (client_id === ``) {
+            const client_id = `kimne78kx3ncx6brgo4mv6wki5h1ko`;
+        } else {
+            const client_id = twitchCPRopts.client_id;
+        }
+        const channelID = twitchCPRopts.channelID;
+        const channel_name = twitchCPRopts.channel_name;
+        const authorization = twitchCPRopts.authorization;
+        const debug = twitchCPRopts.debug;
+        if (debug === ``) {
+            const debug = `false`;
+        } else {
+            const debug = twitchCPRopts.debug;
+        }
+        var data = `[
+    {
+        "operationName": "PauseCustomRewardRedemptions",
+        "variables": {
+            "input": {
+                "channelID": "${channelID}",
+                "rewardID": "${rewardID}",
+                "isPaused": true
+            }
+        },
+        "extensions": {
+            "persistedQuery": {
+                "version": 1,
+                "sha256Hash": "0cf84624f984ef052db18bedb2e034a5c1017dda9d065bb0f6978c3128fa9b99"            }
+        }
+    }
+]`;
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === 4) {
+                if (debug === `true`) {
+                    console.log(`Reward ID: ${rewardID}`);
+                    console.log(`Client ID: ${client_id}`);
+                    console.log(`Channel ID: ${channelID}`);
+                    console.log(`Channel Name: ${channel_name}`);
+                    console.log(`Authentication: ${authorization}`);
+                    console.log(`Raw: ${data}`);
+                } else if (debug === `full`) {
+                    console.log(`Raw: ${data}`);
+                    console.log(`----------------------------`);
+                    console.log(this.responseText);
+                }
+            }
+        });
+        this.xhrGET(xhr, data, client_id, authorization);
+    },
+    unpause: function (rewardID, twitchCPRopts) {
+        const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+        const client_id = twitchCPRopts.client_id;
+        if (client_id === ``) {
+            const client_id = `kimne78kx3ncx6brgo4mv6wki5h1ko`;
+        } else {
+            const client_id = twitchCPRopts.client_id;
+        }
+        const channelID = twitchCPRopts.channelID;
+        const channel_name = twitchCPRopts.channel_name;
+        const authorization = twitchCPRopts.authorization;
+        const debug = twitchCPRopts.debug;
+        if (debug === ``) {
+            const debug = `false`;
+        } else {
+            const debug = twitchCPRopts.debug;
+        }
+        var data = `[
+    {
+        "operationName": "PauseCustomRewardRedemptions",
+        "variables": {
+            "input": {
+                "channelID": "${channelID}",
+                "rewardID": "${rewardID}",
+                "isPaused": false
+            }
+        },
+        "extensions": {
+            "persistedQuery": {
+                "version": 1,
+                "sha256Hash": "0cf84624f984ef052db18bedb2e034a5c1017dda9d065bb0f6978c3128fa9b99"            }
+        }
+    }
+]`;
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === 4) {
+                if (debug === `true`) {
+                    console.log(`Reward ID: ${rewardID}`);
+                    console.log(`Client ID: ${client_id}`);
+                    console.log(`Channel ID: ${channelID}`);
+                    console.log(`Channel Name: ${channel_name}`);
+                    console.log(`Authentication: ${authorization}`);
+                    console.log(`Raw: ${data}`);
+                } else if (debug === `full`) {
+                    console.log(`Raw: ${data}`);
+                    console.log(`----------------------------`);
                     console.log(this.responseText);
                 }
             }
@@ -39,6 +171,12 @@ module.exports = {
         const channelID = twitchCPRopts.channelID;
         const channel_name = twitchCPRopts.channel_name;
         const authorization = twitchCPRopts.authorization;
+        const debug = twitchCPRopts.debug;
+        if (debug === ``) {
+            const debug = `false`;
+        } else {
+            const debug = twitchCPRopts.debug;
+        }
         var data = `[
             {
                 "operationName": "UserModStatus",
@@ -84,22 +222,25 @@ module.exports = {
         var xhr = new XMLHttpRequest();
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === 4) {
-                if (twitchCPRopts.debug === `true`) {
-                    // console.log(`Reward ID: ${rewardID}`);
-                } else if (twitchCPRopts.debug === `full`) {
-                    // console.log(this.responseText);
+                if (debug === `true`) {
+                    console.log(`Client ID: ${client_id}`);
+                    console.log(`Channel ID: ${channelID}`);
+                    console.log(`Channel Name: ${channel_name}`);
+                    console.log(`Authentication: ${authorization}`);
+                } else if (debug === `full`) {
+                    console.log(this.responseText);
                 } else {
-                    var jsonResponse = JSON.parse(this.responseText)[1].data.user.channel.communityPointsSettings.summarizedRewards;
-                    var count = 0;
-                    jsonResponse.forEach(obj => {
-                        Object.entries(obj).forEach(([key, value]) => {
-                            if (key === "node") {
-                                count = count + 1;
-                                console.log(`${count} ${value.title} || ${value.id}`);
-                            }
-                        });
-                    });
                 }
+                var jsonResponse = JSON.parse(this.responseText)[1].data.user.channel.communityPointsSettings.summarizedRewards;
+                var count = 0;
+                jsonResponse.forEach(obj => {
+                    Object.entries(obj).forEach(([key, value]) => {
+                        if (key === "node") {
+                            count = count + 1;
+                            console.log(`${count} ${value.title} || ${value.id}`);
+                        }
+                    });
+                });
             }
         });
         this.xhrGET(xhr, data, client_id, authorization);
