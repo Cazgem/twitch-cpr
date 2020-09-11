@@ -43,12 +43,12 @@ let twitchCPRopts = {
 
 ### Pause a Reward (New in 1.4)
 ```javascript
-twitchCPR.pause(rewardID, `true`, twitchCPRopts);
+twitchCPR.pause(rewardID, twitchCPRopts);
 ```
 
 ### Unpause a Reward (New in 1.4)
 ```javascript
-twitchCPR.unpause(rewardID, `false`, twitchCPRopts);
+twitchCPR.unpause(rewardID, twitchCPRopts);
 ```
 
 ### List Reward IDs (in Console)
