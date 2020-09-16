@@ -1,6 +1,6 @@
 {
   "name": "twitch-cpr",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "Module meant as an extension to tmi.js that allows for the Pausing/UnPausing of Channel Point Rewards. Useful for switching between many game-specific rewards on the fly. Requires XMLHTTPREQUEST, TMI.JS. Recommended: MySQL or some other database to store rewardIDs dynamically.",
   "main": "index.js",
   "scripts": {
@@ -32,6 +32,7 @@
   },
   "homepage": "https://github.com/Cazgem/twitch-cpr#readme",
   "dependencies": {
+    "tmi.js": "^1.5.0",
     "xmlhttprequest": "^1.8.0"
   }
 }

@@ -165,11 +165,15 @@ module.exports = {
         });
         this.xhrGET(xhr, data, client_id, authorization);
     },
-    list: function (twitchCPRopts) {
+    list: function (twitchCPRopts, channel) {
         const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
         const client_id = twitchCPRopts.client_id;
         const channelID = twitchCPRopts.channelID;
-        const channel_name = twitchCPRopts.channel_name;
+        if (channel) {
+            channel_name = channel;
+        } else {
+            channel_name = twitchCPRopts.channel_name;
+        }
         const authorization = twitchCPRopts.authorization;
         const debug = twitchCPRopts.debug;
         if (debug === ``) {

@@ -51,9 +51,14 @@ twitchCPR.pause(rewardID, twitchCPRopts);
 twitchCPR.unpause(rewardID, twitchCPRopts);
 ```
 
-### List Reward IDs (in Console)
+### List Reward IDs (in Console. Still works in 1.5)
 ```javascript
 twitchCPR.list(twitchCPRopts);
+```
+
+### List Reward IDs for other channels [1.5+] (in Console)
+```javascript
+twitchCPR.list(twitchCPRopts, channel);
 ```
 
 ## Toggle [Depreceated]
