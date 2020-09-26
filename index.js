@@ -181,19 +181,19 @@ TwitchCPR.prototype.unpause = function (rewardID) {
 }
 TwitchCPR.prototype.list = function (twitchCPRopts, channel) {
     const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-    const client_id = twitchCPRopts.client_id;
-    const channelID = twitchCPRopts.channelID;
+    const client_id = this.client_id;
+    const channelID = this.channelID;
     if (channel) {
         channel_name = channel;
     } else {
-        channel_name = twitchCPRopts.channel_name;
+        channel_name = this.channel_name;
     }
-    const authorization = twitchCPRopts.authorization;
-    const debug = twitchCPRopts.debug;
+    const authorization = this.authorization;
+    const debug = this.debug;
     if (debug === ``) {
         const debug = `false`;
     } else {
-        const debug = twitchCPRopts.debug;
+        const debug = this.debug;
     }
     var data = `[
             {
@@ -255,7 +255,7 @@ TwitchCPR.prototype.list = function (twitchCPRopts, channel) {
                 Object.entries(obj).forEach(([key, value]) => {
                     if (key === "node") {
                         count = count + 1;
-                        console.log(`${count} ${value.title} || ${value.id}`);
+                        return value;
                     }
                 });
             });
@@ -363,7 +363,7 @@ TwitchCPR.prototype.newGame = function (game_id, channel_id, channel) {
     });
     this.xhrGET(xhr, data, client_id, authorization);
 }
-TwitchCPR.prototype.newGame = function (game_id, channel_id, channel) {
+TwitchCPR.prototype.updateGame = function (game_id, channel_id, channel) {
     const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
     const client_id = this.client_id;
     const channelID = this.channelID;
@@ -450,7 +450,7 @@ TwitchCPR.prototype.newGame = function (game_id, channel_id, channel) {
                             game_id: game_id,
                             reward_id: value.id
                         };
-                        let sql = `INSERT INTO channelpoints_profiles SET ?`;
+                        let sql = `REPLACE INTO channelpoints_profiles SET ?`;
                         let cazgemRewards = that.db.query(sql, load, (err, result) => {
                             if (err) throw err;
                         });
