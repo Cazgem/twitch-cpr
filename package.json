@@ -32,6 +32,7 @@
   },
   "homepage": "https://github.com/Cazgem/twitch-cpr#readme",
   "dependencies": {
+    "mysql": "^2.18.1",
     "tmi.js": "^1.5.0",
     "xmlhttprequest": "^1.8.0"
   }

@@ -4,3 +4,4 @@ test/
 log.*
 package.json
 package-lock.json
+derp.json
