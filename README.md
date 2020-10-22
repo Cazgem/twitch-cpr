@@ -1,6 +1,6 @@
-# twitch-cpr 1.4
+# twitch-cpr 2.0
 
-Twitch-CPR is meant to act as an extension to tmi.js to allow for the automated pausing/unpausing of channel point rewards. It can also run as a stand-alone console application if you wish.
+Twitch-CPR is meant to act as an extension to Polyphony TwitchBot to allow for the automated pausing/unpausing of channel point rewards. It can also run as a stand-alone console application if you wish.
 
 ## Installation
 
@@ -19,8 +19,9 @@ To generate a client-ID (if you don't have one already):
 - Next to your chatbot/applicaiton name, click "Manage"
 - Copy the text inside Client ID
 
-
-Then run the `twitchCPR.list` function (details below) to get your individual reward IDs.
+Getting Reward IDs:
+Option 1) Visit https://polyphony.me, login with your Twitch Account, and navigate to https://polyphony.me/twitch/rewards.
+Option 2) Run the `twitchCPR.list` function (details below) to get your individual reward IDs in the console.
 
 ## Implementation
 
@@ -28,6 +29,7 @@ Then run the `twitchCPR.list` function (details below) to get your individual re
 ```javascript
 const twitchCPR = require(`twitch-cpr`);
 
+const mysql = require('mysql'); // Required for 2.0 Upgrade
 const tmi = require('tmi.js'); // Recommended for chat functionality, though not strictly necessary to function.
 const config = require('./config'); // Great to store variables safely
 ```
@@ -35,24 +37,24 @@ const config = require('./config'); // Great to store variables safely
 ### Building the Config
 ```javascript
 let twitchCPRopts = {
-            channelID: context[`room-id`], // REQUIRED
-            client_id: config.identity.client_id,  // REQUIRED
-            channel_name: config.default.streamer, // REQUIRED
-            authorization: config.identity.authorization, // REQUIRED! "OAUTH ********************" This may WILL BE different than your usual OAUTH Pass. Info on Github.
-            debug: `false` // OPTIONAL: Switch to full to allow full debug mode, or true for just the reward ID's (Full Debug not recommended for production use)
-        }
+        channelID: context[`room-id`],                  // REQUIRED
+        client_id: config.identity.client_id,           // REQUIRED
+        channel_name: config.default.streamer,          // REQUIRED
+        authorization: config.identity.authorization,   // REQUIRED! "OAUTH ********************" This may WILL BE different than your usual OAUTH Pass. Info on Github.
+        debug: `false`                                  // OPTIONAL: Switch to full to allow full debug mode, or true for just the reward ID's (Full Debug not recommended for production use)
+    }
 ```
 
 ## USE
 
 ### Pause a Reward (New in 1.4)
 ```javascript
-twitchCPR.pause(rewardID, twitchCPRopts);
+twitchCPR.pause(rewardID);
 ```
 
 ### Unpause a Reward (New in 1.4)
 ```javascript
-twitchCPR.unpause(rewardID, twitchCPRopts);
+twitchCPR.unpause(rewardID);
 ```
 
 ### List Reward IDs (in Console. Still works in 1.5)
