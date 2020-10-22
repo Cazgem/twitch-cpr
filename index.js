@@ -1,13 +1,12 @@
-//Twitch-CPR
+//Twitch-CPR v 2.0.1
 const Promise = require('promise');
 const mysql = require(`mysql`);
 module.exports = TwitchCPR;
 function TwitchCPR(twitchCPRopts, channel_id, channel_name) {
     this.channel_name = channel_name,                       // REQUIRED!
         this.channelID = channel_id,                        // REQUIRED!
-        this.authorization = twitchCPRopts.authorization,   // REQUIRED! OAUTH 456adwn3qf93yufbnojhnbe This is unique to this service/account combination. Info on Github.
+        this.authorization = twitchCPRopts.authorization,   // REQUIRED! OAUTH ********************* This is unique to this service/account combination. Info on Github.
         this.debug = twitchCPRopts.debug || `false`,
-        this.debug = twitchCPRopts.debug,
         this.database = twitchCPRopts.database,
         this.db = mysql.createConnection({
             host: twitchCPRopts.mysql.host,
@@ -15,8 +14,7 @@ function TwitchCPR(twitchCPRopts, channel_id, channel_name) {
             password: twitchCPRopts.mysql.password,
             database: twitchCPRopts.mysql.database
         });
-    this.client_id = `kimne78kx3ncx6brgo4mv6wki5h1ko`;
-
+    this.client_id = `kimne78kx3ncx6brgo4mv6wki5h1ko`;      //Static Client ID used by the GQL endpoint. Left as a field incase of future breaks.
 }
 TwitchCPR.prototype.toggle = function (rewardID, isPaused, twitchCPRopts) {
     const pause = isPaused;
