@@ -1,6 +1,8 @@
-# twitch-cpr 2.0
+# twitch-cpr 2.0.1
 
 Twitch-CPR is meant to act as an extension to Polyphony TwitchBot to allow for the automated pausing/unpausing of channel point rewards. It can also run as a stand-alone console application if you wish.
+
+If you like what you see, consider visiting my patreon, or visit my twitch page for a paypal donation link.
 
 ## Installation
 
@@ -20,8 +22,13 @@ To generate a client-ID (if you don't have one already):
 - Copy the text inside Client ID
 
 Getting Reward IDs:
-Option 1) Visit https://polyphony.me, login with your Twitch Account, and navigate to https://polyphony.me/twitch/rewards.
-Option 2) Run the `twitchCPR.list` function (details below) to get your individual reward IDs in the console.
+- Visit `https://www.twitch.tv/popout/<username>/reward-queue` as the account you wish to authorize for these actions.
+- Navigate to a reward.
+- Open the browser console.
+- Look at Network Activity, and click the Pause Redemptions Slider at the top-left of the page.
+- The Network Activity you are looking for is under "gql".
+- Grab your Reward ID from Preview->0->data->updateComunityPointsCustomReward->reward->id.
+- Simple Reward ID fetcher coming soon to https://polyphony.me/twitch! (2.3)
 
 ## Implementation
 
@@ -37,64 +44,68 @@ const config = require('./config'); // Great to store variables safely
 ### Building the Config
 ```javascript
 let twitchCPRopts = {
-        channelID: context[`room-id`],                  // REQUIRED
-        client_id: config.identity.client_id,           // REQUIRED
-        channel_name: config.default.streamer,          // REQUIRED
-        authorization: config.identity.authorization,   // REQUIRED! "OAUTH ********************" This may WILL BE different than your usual OAUTH Pass. Info on Github.
-        debug: `false`                                  // OPTIONAL: Switch to full to allow full debug mode, or true for just the reward ID's (Full Debug not recommended for production use)
+    channel_name: config.default.streamer, // REQUIRED!
+    channelID: config.default.channel_id, // REQUIRED!
+    authorization: config.identity.authorization, // REQUIRED! OAUTH ****************** This is unique to this service/account combination. Info on Github.
+    debug: `false`,
+    database: true,
+    mysql: {
+        host: config.mysql.host,
+        user: config.mysql.user,
+        password: config.mysql.password,
+        database: config.mysql.database
     }
+}
+```
+
+### Implement and Call the Class
+```javascript
+const Twitch_CPR = require(`../index.js`);
+// Call once per command
+const twitchCPR = new Twitch_CPR(twitchCPRopts, config.default.channel_id, config.default.streamer); // user-id === room-id in deployment, channel derived automatically
 ```
 
 ## USE
 
-### Pause a Reward (New in 1.4)
+### Toggle a Reward
+```javascript
+twitchCPR.toggle = function (rewardID, isPaused, twitchCPRopts);
+```
+
+### Pause a Reward
 ```javascript
 twitchCPR.pause(rewardID);
 ```
 
-### Unpause a Reward (New in 1.4)
+### Unpause a Reward
 ```javascript
 twitchCPR.unpause(rewardID);
 ```
 
-### List Reward IDs (in Console. Still works in 1.5)
+### List Rewards Profiles
 ```javascript
-twitchCPR.list(twitchCPRopts);
+twitchCPR.listGames(channel_id, channel_name, client);
 ```
 
-### List Reward IDs for other channels [1.5+] (in Console)
+### Create a Reward
 ```javascript
-twitchCPR.list(twitchCPRopts, channel);
+twitchCPR.newGame((game_id, channel_id, channel);
 ```
 
-## Toggle [Depreceated]
-
-### [Toggle] Pause a Reward (depreceated)
+### Delete a Reward
 ```javascript
-twitchCPR.toggle(rewardID, `true`, twitchCPRopts);
+twitchCPR.deleteGame((game_id, channel_id, channel);
 ```
 
-### [Toggle] Unpause a Reward (depreceated)
+### Update a Reward
 ```javascript
-twitchCPR.toggle(rewardID, `false`, twitchCPRopts);
+twitchCPR.updateGame((game_id, channel_id, channel);
 ```
 
-## Debugging
-
-### Off
+### Switch a Reward
 ```javascript
-twitchCPR.toggle(rewardID, `true`, twitchCPRopts, `false`);
-```
-### Light - Prints Reward IDs to Console
-```javascript
-twitchCPR.toggle(rewardID, `true`, twitchCPRopts, `true`);
+twitchCPR.switch((game_id, channel_id, channel);
 ```
 
-### Full - Prints entire handshake, exchange, and data dump from the HTTP POST
-```javascript
-twitchCPR.toggle(rewardID, `true`, twitchCPRopts, `full`);
-```
 
 Developed by Cazgem for personal use at (https://twitch.tv/cazgem) as well as for his chatbot, Polyphony.
-
-Credit to BrainlessSociety for discovering some of the endpoints used.
