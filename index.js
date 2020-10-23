@@ -1,4 +1,4 @@
-//Twitch-CPR v 2.0.2
+//Twitch-CPR v 2.1.2
 const Promise = require('promise');
 const mysql = require(`mysql`);
 module.exports = TwitchCPR;
@@ -15,6 +15,7 @@ function TwitchCPR(twitchCPRopts, channel_id, channel_name) {
             password: twitchCPRopts.mysql.password,
             database: twitchCPRopts.mysql.database
         });
+    this.version = `2.1.2`;
     this.client_id = `kimne78kx3ncx6brgo4mv6wki5h1ko`;      //Static Client ID used by the GQL endpoint. Left as a field incase of future breaks.
     let sql = `create table if not exists ${this.tableName}(
         id int(11) primary key auto_increment,
@@ -193,8 +194,6 @@ TwitchCPR.prototype.listByGame = function (game_id, channel_id, channel) {
     });
 }
 TwitchCPR.prototype.listAll = function (channel_id, channel) {
-    // console.log(channel_id);
-    // console.log(channel);
     const channelID = channel_id;
     const authorization = this.authorization;
     const client_id = this.client_id;
@@ -656,4 +655,8 @@ TwitchCPR.prototype.cleanup = function () {
         if (err) {
         }
     });
+}
+TwitchCPR.prototype.version = function (channel_name, client) {
+    client.action(channel_name, `Twitch CPR Version ${this.version}`);
+    console.log(`Twitch CPR Version ${this.version}`);
 }
