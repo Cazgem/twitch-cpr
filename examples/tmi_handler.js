@@ -1,4 +1,4 @@
-//Twitch-CPR v 2.0.1 Twitch Chat Handler Example (utilizing tmi.js)
+//Twitch-CPR v 2.0.2 Twitch Chat Handler Example (utilizing tmi.js)
 
 const config = require('./config');
 const twitchCPRopts = {

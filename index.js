@@ -1,4 +1,4 @@
-//Twitch-CPR v 2.0.1
+//Twitch-CPR v 2.0.2
 const Promise = require('promise');
 const mysql = require(`mysql`);
 module.exports = TwitchCPR;
@@ -7,7 +7,8 @@ function TwitchCPR(twitchCPRopts, channel_id, channel_name) {
         this.channelID = channel_id,                        // REQUIRED!
         this.authorization = twitchCPRopts.authorization,   // REQUIRED! OAUTH ********************* This is unique to this service/account combination. Info on Github.
         this.debug = twitchCPRopts.debug || `false`,
-        this.database = twitchCPRopts.database,
+        this.database = twitchCPRopts.database || true,
+        this.tableName = twitchCPRopts.tableName || `twitchCPR`,
         this.db = mysql.createConnection({
             host: twitchCPRopts.mysql.host,
             user: twitchCPRopts.mysql.user,
@@ -15,6 +16,18 @@ function TwitchCPR(twitchCPRopts, channel_id, channel_name) {
             database: twitchCPRopts.mysql.database
         });
     this.client_id = `kimne78kx3ncx6brgo4mv6wki5h1ko`;      //Static Client ID used by the GQL endpoint. Left as a field incase of future breaks.
+    let sql = `create table if not exists ${this.tableName}(
+        id int(11) primary key auto_increment,
+        channel_id int(12),
+        game_id varchar(50),
+        reward_id varchar(50),
+        reward_title varchar(125) default null,
+        isPaused varchar(5)
+    )`;
+    let createDB = this.db.query(sql, (err, result) => {
+        if (err) throw err;
+    });
+
 }
 TwitchCPR.prototype.toggle = function (rewardID, isPaused, twitchCPRopts) {
     const pause = isPaused;
@@ -171,7 +184,7 @@ TwitchCPR.prototype.listByGame = function (game_id, channel_id, channel) {
         console.log(this.responseText);
     } else {
     }
-    let sql = `SELECT * FROM channelpoints_profiles WHERE channel_id='${channelID}' AND game_id='${game_id}' AND isPaused='0'`;
+    let sql = `SELECT * FROM ${this.tableName} WHERE channel_id='${channelID}' AND game_id='${game_id}' AND isPaused='0'`;
     this.db.query(sql, function (err, row, fields) {
         row.forEach(element => {
             let string = `${element.reward_title}: ${element.reward_id}`;
@@ -195,7 +208,7 @@ TwitchCPR.prototype.listAll = function (channel_id, channel) {
         console.log(this.responseText);
     } else {
     }
-    let sql = `SELECT * FROM channelpoints_profiles WHERE channel_id='${channelID}'`;
+    let sql = `SELECT * FROM ${this.tableName} WHERE channel_id='${channelID}'`;
     this.db.query(sql, function (err, row, fields) {
         row.forEach(element => {
             let string = `${element.reward_title}: ${element.reward_id}`;
@@ -218,7 +231,7 @@ TwitchCPR.prototype.listGames = function (channel_id, channel_name, client) {
     } else {
         // Hello There! Like the scripts? Consider checking out My patreon. :) (https://patreon.com/cazgem)
     }
-    let sql = `SELECT DISTINCT game_id FROM channelpoints_profiles WHERE channel_id='${channelID}'`;
+    let sql = `SELECT DISTINCT game_id FROM ${this.tableName} WHERE channel_id='${channelID}'`;
     this.db.query(sql, function (err, row, fields) {
         let total = row.length;
         var count = 0;
@@ -320,11 +333,10 @@ TwitchCPR.prototype.newGame = function (game_id, channel_id, channel) {
                             game_id: game_id,
                             reward_id: value.id
                         };
-                        let sql = `REPLACE INTO channelpoints_profiles SET ?`;
+                        let sql = `REPLACE INTO ${that.tableName} SET ?`;
                         let cazgemRewards = that.db.query(sql, load, (err, result) => {
                             if (err) throw err;
                         });
-                        // console.log(`${load.isPaused}`);
                     }
 
                 });
@@ -349,7 +361,7 @@ TwitchCPR.prototype.deleteGame = function (game_id, channel_id, channel) {
         channel_id: channel_id,
         game_id: game_id
     };
-    let sql = `DELETE FROM channelpoints_profiles WHERE channel_id='${channel_id}' AND game_id='${game_id}'`;
+    let sql = `DELETE FROM ${this.tableName} WHERE channel_id='${channel_id}' AND game_id='${game_id}'`;
     let cazgemRewards = that.db.query(sql, load, (err, result) => {
         if (err) throw err;
     });
@@ -434,7 +446,7 @@ TwitchCPR.prototype.updateGame = function (game_id, channel_id, channel) {
                             game_id: game_id,
                             reward_id: value.id
                         };
-                        let sql = `REPLACE INTO channelpoints_profiles SET ?`;
+                        let sql = `REPLACE INTO ${that.tableName} SET ?`;
                         let cazgemRewards = that.db.query(sql, load, (err, result) => {
                             if (err) throw err;
                         });
@@ -516,7 +528,7 @@ TwitchCPR.prototype.switch = function (game_id, channel_id, channel_name) {
                     jsonResponse.forEach(obj => {
                         Object.entries(obj).forEach(([key, value]) => {
                             if (key === "node") {
-                                let sql = `SELECT * FROM channelpoints_profiles WHERE channel_id='${channelID}' AND game_id='${game_id}' AND reward_id='${value.id}'`;
+                                let sql = `SELECT * FROM ${that.tableName} WHERE channel_id='${channelID}' AND game_id='${game_id}' AND reward_id='${value.id}'`;
                                 that.db.query(sql, function (err, result, fields) {
                                     // if (err) throw err;
                                     if (result.length > 0) {
