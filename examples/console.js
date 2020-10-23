@@ -1,4 +1,4 @@
-//Twitch-CPR v 2.1.2 Console Logging Example (headless)
+//Twitch-CPR v 2.1.3 Console Logging Example (headless)
 
 const config = require(`./secretConfig.js`);
 var params = process.argv.slice(2);
@@ -38,13 +38,9 @@ if (cname === `pause`) {
     } else if (params[1] === `debug`) {
         twitchCPR.debugit(params[2], params[3], params[4]);
     } else if (params[1] === `list`) {
-        if (params[2] === `all`) {
-            twitchCPR.listAll(params[2], config.default.channel_id, config.default.channel, client, config.default.streamer);
-        } else if (params[2]) {
-            twitchCPR.listByGame(params[2], config.default.channel_id, config.default.channel, client, config.default.streamer);
-        } else {
-            twitchCPR.listGames(config.default.channel_id, config.default.streamer, client);
-        }
+        twitchCPR.listGames(config.default.channel_id, config.default.streamer, client);
+    } else if (cname === `version`) {
+        console.log(`Twitch CPR Version ${twitchCPR.version}`);
     } else {
         twitchCPR.switch(params[1], config.default.channel_id, config.default.streamer);
     }

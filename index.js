@@ -241,7 +241,7 @@ TwitchCPR.prototype.listGames = function (channel_id, channel_name, client) {
                 let string = `${element.game_id}`;
                 list = list + string;
                 client.action(channel_name, list);
-                // console.log(list);
+                // console.log(`${list}`);
             } else {
                 let string = `${element.game_id}, `;
                 list = list + string;
@@ -546,7 +546,7 @@ TwitchCPR.prototype.switch = function (game_id, channel_id, channel_name) {
                 )
             });
             promise.then(
-                console.log('Profile Switch')
+                console.log(`Profile Switched to ${game_id}`)
             )
         }
     });
@@ -655,8 +655,4 @@ TwitchCPR.prototype.cleanup = function () {
         if (err) {
         }
     });
-}
-TwitchCPR.prototype.version = function (channel_name, client) {
-    client.action(channel_name, `Twitch CPR Version ${this.version}`);
-    console.log(`Twitch CPR Version ${this.version}`);
 }

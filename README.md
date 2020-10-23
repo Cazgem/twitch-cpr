@@ -1,4 +1,4 @@
-# twitch-cpr 2.1.2
+# twitch-cpr 2.1.3
 
 Twitch-CPR is meant to act as an extension to Polyphony TwitchBot to allow for the automated pausing/unpausing of channel point rewards. It can also run as a stand-alone console application if you wish.
 
@@ -6,7 +6,8 @@ If you like what you see, consider visiting my patreon, or visit my twitch page 
 
 ### What's New?
 
-Automated MySQL Database Creation
+Automated MySQL Database Creation, Customized Table Name
+Version Call
 Code Cleanup
 
 ## Installation
@@ -94,22 +95,27 @@ twitchCPR.listGames(channel_id, channel_name, client);
 
 ### Create a Reward
 ```javascript
-twitchCPR.newGame((game_id, channel_id, channel);
+twitchCPR.newGame(game_id, channel_id, channel);
 ```
 
 ### Delete a Reward
 ```javascript
-twitchCPR.deleteGame((game_id, channel_id, channel);
+twitchCPR.deleteGame(game_id, channel_id, channel);
 ```
 
 ### Update a Reward
 ```javascript
-twitchCPR.updateGame((game_id, channel_id, channel);
+twitchCPR.updateGame(game_id, channel_id, channel);
 ```
 
 ### Switch a Reward
 ```javascript
-twitchCPR.switch((game_id, channel_id, channel);
+twitchCPR.switch(game_id, channel_id, channel);
+```
+
+### Call Version
+```javascript
+twitchCPR.version;
 ```
 
 
