@@ -1,4 +1,4 @@
-//Twitch-CPR v 2.0.1 Console Logging Example (headless)
+//Twitch-CPR v 2.1.2 Console Logging Example (headless)
 
 const config = require(`./secretConfig.js`);
 var params = process.argv.slice(2);
