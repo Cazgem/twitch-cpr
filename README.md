@@ -1,8 +1,13 @@
-# twitch-cpr 2.0.1
+# twitch-cpr 2.0.2
 
 Twitch-CPR is meant to act as an extension to Polyphony TwitchBot to allow for the automated pausing/unpausing of channel point rewards. It can also run as a stand-alone console application if you wish.
 
 If you like what you see, consider visiting my patreon, or visit my twitch page for a paypal donation link.
+
+### What's New?
+
+Automated MySQL Database Creation
+Code Cleanup
 
 ## Installation
 
