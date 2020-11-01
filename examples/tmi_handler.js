@@ -1,4 +1,4 @@
-//Twitch-CPR v 2.0.2 Twitch Chat Handler Example (utilizing tmi.js)
+//Twitch-CPR v 2.1.3 Twitch Chat Handler Example (utilizing tmi.js)
 
 const config = require('./config');
 const twitchCPRopts = {
@@ -61,6 +61,8 @@ exports.run = (client, msg, params, context, channel, self) => {
             twitchCPR.switch(params[0], context[`room-id`], channel.slice(1));
             client.action(channel, `Profile switched to ${params[0]} for ${channel.slice(1)}.`);
         }
+    } else if (cname === `version`) {
+        console.log(`Twitch CPR Version ${twitchCPR.version}`);
     } else {
         client.action(channel, `Use: !cpr [new, edit, delete, switch, <profileName>].`);
     }
