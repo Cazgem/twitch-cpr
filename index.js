@@ -3,7 +3,7 @@ const Promise = require('promise');
 const mysql = require(`mysql`);
 module.exports = TwitchCPR;
 function TwitchCPR(twitchCPRopts, channel_id, channel_name) {
-    this.channel_name = channel_name,                       // REQUIRED!
+    this.channel_name = channel_name,                       // REQUIRED! 
         this.channelID = channel_id,                        // REQUIRED!
         this.authorization = twitchCPRopts.authorization,   // REQUIRED! OAUTH ********************* This is unique to this service/account combination. Info on Github.
         this.debug = twitchCPRopts.debug || `false`,
