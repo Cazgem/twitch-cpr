@@ -1,4 +1,4 @@
-//Twitch-CPR v 2.1.2
+//Twitch-CPR v 2.1.2 
 const Promise = require('promise');
 const mysql = require(`mysql`);
 module.exports = TwitchCPR;
