@@ -66,7 +66,7 @@ let twitchCPRopts = {
 
 ### Implement and Call the Class
 ```javascript
-const Twitch_CPR = require(`../index.js`);
+const Twitch_CPR = require(`twitch-cpr`);
 // Call once per command
 const twitchCPR = new Twitch_CPR(twitchCPRopts, config.default.channel_id, config.default.streamer); // user-id === room-id in deployment, channel derived automatically
 ```
