@@ -1,4 +1,4 @@
-//Twitch-CPR v 3.0.0
+//Twitch-CPR v 2.1.5
 const Promise = require('promise');
 const mysql = require(`mysql`);
 // const Polyphony = require(`polyphony.js`);
