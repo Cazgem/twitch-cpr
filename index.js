@@ -1,9 +1,10 @@
-//Twitch-CPR v 2.1.2 
+//Twitch-CPR v 2.1.5
 const Promise = require('promise');
 const mysql = require(`mysql`);
+// const Polyphony = require(`polyphony.js`);
 module.exports = TwitchCPR;
 function TwitchCPR(twitchCPRopts, channel_id, channel_name) {
-    this.channel_name = channel_name,                       // REQUIRED!
+    this.channel_name = channel_name,                       // REQUIRED!  
         this.channelID = channel_id,                        // REQUIRED!
         this.authorization = twitchCPRopts.authorization,   // REQUIRED! OAUTH ********************* This is unique to this service/account combination. Info on Github.
         this.debug = twitchCPRopts.debug || `false`,
@@ -15,7 +16,7 @@ function TwitchCPR(twitchCPRopts, channel_id, channel_name) {
             password: twitchCPRopts.mysql.password,
             database: twitchCPRopts.mysql.database
         });
-    this.version = `2.1.2`;
+    this.version = `2.1.5`;
     this.client_id = `kimne78kx3ncx6brgo4mv6wki5h1ko`;      //Static Client ID used by the GQL endpoint. Left as a field incase of future breaks.
     let sql = `create table if not exists ${this.tableName}(
         id int(11) primary key auto_increment,
@@ -28,6 +29,7 @@ function TwitchCPR(twitchCPRopts, channel_id, channel_name) {
     let createDB = this.db.query(sql, (err, result) => {
         if (err) throw err;
     });
+    // const polyphony = new Polyphony();
 
 }
 TwitchCPR.prototype.toggle = function (rewardID, isPaused, twitchCPRopts) {
