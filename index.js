@@ -1,21 +1,22 @@
-//Twitch-CPR v 2.1.2 
+//Twitch-CPR v 3.0.0 EventSub Update
 const Promise = require('promise');
 const mysql = require(`mysql`);
+const Polyphony = require(`polyphony.js`);
 module.exports = TwitchCPR;
-function TwitchCPR(twitchCPRopts, channel_id, channel_name) {
-    this.channel_name = channel_name,                       // REQUIRED!  
-        this.channelID = channel_id,                        // REQUIRED!
-        this.authorization = twitchCPRopts.authorization,   // REQUIRED! OAUTH ********************* This is unique to this service/account combination. Info on Github.
-        this.debug = twitchCPRopts.debug || `false`,
-        this.database = twitchCPRopts.database || true,
-        this.tableName = twitchCPRopts.tableName || `twitchCPR`,
+function TwitchCPR(config, polyphony_link = null) {
+    this.channel_name = config.default.channel_name,                       // REQUIRED!  
+        this.channelID = config.default.channel_id,                        // REQUIRED!
+        this.authorization = config.identity.authorization,   // REQUIRED! OAUTH ********************* This is unique to this service/account combination. Info on Github.
+        this.debug = config.twitchCPR.debug || `false`,
+        this.database = config.twitchCPR.database || true,
+        this.tableName = config.twitchCPR.tableName || `twitchCPR`,
         this.db = mysql.createConnection({
-            host: twitchCPRopts.mysql.host,
-            user: twitchCPRopts.mysql.user,
-            password: twitchCPRopts.mysql.password,
-            database: twitchCPRopts.mysql.database
+            host: config.mysql.host,
+            user: config.mysql.user,
+            password: config.mysql.password,
+            database: config.mysql.database
         });
-    this.version = `2.1.2`;
+    this.version = `3.0.0 EventSub Update`;
     this.client_id = `kimne78kx3ncx6brgo4mv6wki5h1ko`;      //Static Client ID used by the GQL endpoint. Left as a field incase of future breaks.
     let sql = `create table if not exists ${this.tableName}(
         id int(11) primary key auto_increment,
@@ -28,7 +29,7 @@ function TwitchCPR(twitchCPRopts, channel_id, channel_name) {
     let createDB = this.db.query(sql, (err, result) => {
         if (err) throw err;
     });
-
+    this.polyphony = polyphony_link || new Polyphony(config);
 }
 TwitchCPR.prototype.toggle = function (rewardID, isPaused, twitchCPRopts) {
     const pause = isPaused;
