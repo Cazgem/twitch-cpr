@@ -1,0 +1,39 @@
+{
+    "id": "d3ee9141-e6ae-4561-a443-e4cd1deefa62",
+    "backgroundColor": "#464646",
+    "cooldownExpiresAt": null,
+    "cost": 2000,
+    "defaultImage": {
+        "url": "https://static-cdn.jtvnw.net/custom-reward-images/default-1.png",
+        "url2x": "https://static-cdn.jtvnw.net/custom-reward-images/default-2.png",
+        "url4x": "https://static-cdn.jtvnw.net/custom-reward-images/default-4.png",
+        "__typename": "CommunityPointsImage"
+    },
+    "image": null,
+    "maxPerStreamSetting": {
+        "isEnabled": false,
+        "maxPerStream": 0,
+        "__typename": "CommunityPointsCustomRewardMaxPerStreamSetting"
+    },
+    "maxPerUserPerStreamSetting": {
+        "isEnabled": false,
+        "maxPerUserPerStream": 0,
+        "__typename": "CommunityPointsCustomRewardMaxPerUserPerStreamSetting"
+    },
+    "globalCooldownSetting": {
+        "isEnabled": false,
+        "globalCooldownSeconds": 0,
+        "__typename": "CommunityPointsCustomRewardGlobalCooldownSetting"
+    },
+    "isEnabled": true,
+    "isInStock": true,
+    "isPaused": true,
+    "isSubOnly": false,
+    "isUserInputRequired": true,
+    "shouldRedemptionsSkipRequestQueue": false,
+    "redemptionsRedeemedCurrentStream": 0,
+    "prompt": "Adopt a large road or Avenue (4+ tiles wide). Name it below!",
+    "title": "C:S - Adopt an Avenue",
+    "updatedForIndicatorAt": "2019-10-31T09:25:18.322939264Z",
+    "__typename": "CommunityPointsCustomReward"
+}
