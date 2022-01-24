@@ -1,4 +1,5 @@
 //Twitch-CPR v 3.0.0 EventSub Update
+const request = require(`request`);
 const Promise = require('promise');
 const mysql = require(`mysql`);
 const Polyphony = require(`polyphony.js`);
@@ -6,6 +7,7 @@ module.exports = TwitchCPR;
 function TwitchCPR(config, polyphony_link = null) {
     this.channel_name = config.default.channel_name,                       // REQUIRED!  
         this.channelID = config.default.channel_id,                        // REQUIRED!
+        this.channel_id = config.default.channel_id,
         this.authorization = config.identity.authorization,   // REQUIRED! OAUTH ********************* This is unique to this service/account combination. Info on Github.
         this.debug = config.twitchCPR.debug || `false`,
         this.database = config.twitchCPR.database || true,
@@ -17,7 +19,7 @@ function TwitchCPR(config, polyphony_link = null) {
             database: config.mysql.database
         });
     this.version = `3.0.0 EventSub Update`;
-    this.client_id = `kimne78kx3ncx6brgo4mv6wki5h1ko`;      //Static Client ID used by the GQL endpoint. Left as a field incase of future breaks.
+    this.client_id = config.identity.client_id;      //Static Client ID used by the GQL endpoint. Left as a field incase of future breaks.
     let sql = `create table if not exists ${this.tableName}(
         id int(11) primary key auto_increment,
         channel_id int(12),
@@ -29,7 +31,223 @@ function TwitchCPR(config, polyphony_link = null) {
     let createDB = this.db.query(sql, (err, result) => {
         if (err) throw err;
     });
-    this.polyphony = polyphony_link || new Polyphony(config);
+    this.polyphony = polyphony_link || new Polyphony(config).Twitch;
+}
+TwitchCPR.prototype.create = function (channel_id, _body, callback) {
+    const that = this;
+    this.polyphony.fetchAccessToken(channel_id, function (err, token) {
+        if (!token) { console.log(`No Access Token Found!`); throw err; } else {
+            let body = _body;
+            const opts = {
+                method: 'POST',
+                url: `https://api.twitch.tv/helix/channel_points/custom_rewards?broadcaster_id=${channel_id}`,
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Client-ID': `${that.client_id}`
+                },
+                body,
+                json: true
+            };
+            console.log(opts)
+            request(opts, function (error, response, resbody) {
+                if (!error && response.statusCode == 200) {
+                    // return callback(null, JSON.parse(response.body).data[0]);
+                    return callback(null, response.body);
+                } else {
+                    console.log(`Request ${error}`);
+                    that.polyphony.refreshToken(channel_id, function (err, res) {
+                        // that.fetchAccessToken(channel_id, function (err, res) {
+                        return callback(null, res);
+                        // }, res.access_token);
+                    });
+                    return callback(`Refreshing Token!`, null);
+                }
+            });
+        }
+    })
+}
+TwitchCPR.prototype.enable = function (channel_id, id, callback) {
+    const that = this;
+    this.polyphony.fetchAccessToken(channel_id, function (err, token) {
+        if (!token) { console.log(`No Access Token Found!`); throw err; } else {
+            let body = {
+                is_enabled: true
+            }
+            const opts = {
+                method: 'PATCH',
+                url: `https://api.twitch.tv/helix/channel_points/custom_rewards?broadcaster_id=${channel_id}&id=${id}`,
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Client-ID': `${that.client_id}`
+                },
+                body,
+                json: true
+            };
+            request(opts, function (error, response, resbody) {
+                if (!error && response.statusCode == 200) {
+                    // return callback(null, JSON.parse(response.body).data[0]);
+                    console.log(`Success!`);
+                    return callback(null, response);
+                } else {
+                    console.log(response)
+                    that.polyphony.refreshToken(channel_id, function (err, res) {
+                        // that.fetchAccessToken(channel_id, function (err, res) {
+                        return callback(null, res);
+                        // }, res.access_token);
+                    });
+                    return callback(`Refreshing Token!`, null);
+                }
+            });
+        }
+    });
+}
+TwitchCPR.prototype.disable = function (channel_id, id, callback) {
+    const that = this;
+    this.polyphony.fetchAccessToken(channel_id, function (err, token) {
+        if (!token) { console.log(`No Access Token Found!`); throw err; } else {
+            let body = {
+                is_enabled: false
+            }
+            const opts = {
+                method: 'PATCH',
+                url: `https://api.twitch.tv/helix/channel_points/custom_rewards?broadcaster_id=${channel_id}&id=${id}`,
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Client-ID': `${that.client_id}`
+                },
+                body,
+                json: true
+            };
+            request(opts, function (error, response, resbody) {
+                if (!error || response.statusCode == 200) {
+                    // return callback(null, JSON.parse(response.body).data[0]);
+                    return callback(null, response);
+                } else {
+                    that.polyphony.refreshToken(channel_id, function (err, res) {
+                        // that.fetchAccessToken(channel_id, function (err, res) {
+                        return callback(null, res);
+                        // }, res.access_token);
+                    });
+                    return callback(`Refreshing Token!`, null);
+                }
+            });
+        }
+    });
+}
+TwitchCPR.prototype.delete = function (channel_id, id, callback) {
+    const that = this;
+    this.polyphony.fetchAccessToken(channel_id, function (err, token) {
+        if (!token) { console.log(`No Access Token Found!`); throw err; } else {
+            // console.log(`found token for ${channel_id}`)
+            const opts = {
+                method: 'DELETE',
+                url: `https://api.twitch.tv/helix/channel_points/custom_rewards?broadcaster_id=${channel_id}&id=${id}`,
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Client-ID': `${that.client_id}`
+                }
+            };
+            request(opts, function (error, response, resbody) {
+                if (!error || response.statusCode == 204) {
+                    return callback(null, JSON.parse(response.statusCode));
+                } else {
+                    that.polyphony.refreshToken(channel_id, function (err, res) {
+                        // that.fetchAccessToken(channel_id, function (err, res) {
+                        return callback(null, res);
+                        // }, res.access_token);
+                    });
+                    return callback(`Refreshing Token!`, null);
+                }
+            });
+        }
+    });
+}
+TwitchCPR.prototype.get = function (channel_id, id, callback) {
+    const that = this;
+    this.polyphony.fetchAccessToken(channel_id, function (err, token) {
+        if (!token) { console.log(`No Access Token Found!`); throw err; } else {
+            // console.log(`found token for ${channel_id}`)
+            const opts = {
+                method: 'GET',
+                url: `https://api.twitch.tv/helix/channel_points/custom_rewards?broadcaster_id=${channel_id}&id=${id}`,
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Client-ID': `${that.client_id}`
+                }
+            };
+            request(opts, function (error, response, resbody) {
+                if (!error || response.statusCode == 204) {
+                    return callback(null, JSON.parse(response.body).data[0]);
+                } else {
+                    that.polyphony.refreshToken(channel_id, function (err, res) {
+                        // that.fetchAccessToken(channel_id, function (err, res) {
+                        return callback(null, res);
+                        // }, res.access_token);
+                    });
+                    return callback(`Refreshing Token!`, null);
+                }
+            });
+        }
+    });
+}
+TwitchCPR.prototype.list = function (channel_id, callback) {
+    const that = this;
+    this.polyphony.fetchAccessToken(channel_id, function (err, token) {
+        if (!token) { console.log(`No Access Token Found!`); throw err; } else {
+            const opts = {
+                method: 'GET',
+                url: `https://api.twitch.tv/helix/channel_points/custom_rewards?broadcaster_id=${channel_id}`,
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Client-ID': `${that.client_id}`
+                }
+            };
+            request(opts, function (error, response, resbody) {
+                if (!error || response.statusCode == 204) {
+                    return callback(null, JSON.parse(response.body).data);
+                } else {
+                    that.polyphony.refreshToken(channel_id, function (err, res) {
+                        // that.fetchAccessToken(channel_id, function (err, res) {
+                        return callback(null, res);
+                        // }, res.access_token);
+                    });
+                    return callback(`Refreshing Token!`, null);
+                }
+            });
+        }
+    });
+}
+TwitchCPR.prototype.transfer = function (channel_id, callback) {
+    const that = this;
+    this.list(channel_id, function (err, res) {
+        res.forEach(cpr => {
+            console.log(`${cpr.title} | ${cpr.id} | ${cpr.is_enabled}`);
+            let load = {
+                broadcaster_id: cpr.broadcaster_id,
+                id: cpr.id,
+                title: cpr.title,
+                prompt: cpr.prompt,
+                cost: cpr.cost,
+                image: cpr.image,
+                default_image: cpr.default_image,
+                background_color: cpr.background_color,
+                is_enabled: cpr.is_enabled,
+                is_user_input_required: cpr.is_user_input_required,
+                max_per_stream_setting: cpr.max_per_stream_setting,
+                max_per_user_per_stream_setting: cpr.max_per_user_per_stream_setting,
+                global_cooldown_setting: cpr.global_cooldown_setting,
+                is_paused: cpr.is_paused,
+                is_in_stock: cpr.is_in_stock,
+                should_redemptions_skip_request_queue: cpr.should_redemptions_skip_request_queue,
+                redemptions_redeemed_current_stream: cpr.redemptions_redeemed_current_stream,
+                cooldown_expires_at: cpr.cooldown_expires_at
+            };
+            let sql = `INSERT INTO channelpointsrewards SET ?`;
+            let cazgemRewards = that.db.query(sql, load, (err, result) => {
+                if (err) throw err;
+            });
+        });
+    })
 }
 TwitchCPR.prototype.toggle = function (rewardID, isPaused, twitchCPRopts) {
     const pause = isPaused;
@@ -458,7 +676,7 @@ TwitchCPR.prototype.updateGame = function (game_id, channel_id, channel) {
     });
     this.xhrGET(xhr, data, client_id, authorization);
 }
-TwitchCPR.prototype.switch = function (game_id, channel_id, channel_name) {
+TwitchCPR.prototype.switch = function (game_id, channel_id, channel_name, callback) {
     console.log(`${game_id} ${channel_id} ${channel_name}`)
     const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
     const channelID = channel_id;
@@ -530,6 +748,9 @@ TwitchCPR.prototype.switch = function (game_id, channel_id, channel_name) {
                             if (key === "node") {
                                 let sql = `SELECT * FROM ${that.tableName} WHERE channel_id='${channelID}' AND game_id='${game_id}' AND reward_id='${value.id}'`;
                                 that.db.query(sql, function (err, result, fields) {
+                                    if (callback) {
+                                        callback(err, result);
+                                    }
                                     // if (err) throw err;
                                     if (result.length > 0) {
                                         if (result[0].isPaused === `1`) {

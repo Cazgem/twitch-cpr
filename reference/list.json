@@ -1,0 +1,820 @@
+{
+    "data": [
+        {
+            "broadcaster_name": "Cazgem",
+            "broadcaster_id": "46332253",
+            "id": "09dfc72f-f8b0-4354-854c-09796d3ff6f3",
+            "image": null,
+            "background_color": "#030040",
+            "is_enabled": true,
+            "cost": 3000,
+            "title": "Request Cazgem Original Music",
+            "prompt": "",
+            "is_user_input_required": false,
+            "max_per_stream_setting": {
+                "is_enabled": true,
+                "max_per_stream": 4
+            },
+            "max_per_user_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_user_per_stream": 0
+            },
+            "global_cooldown_setting": {
+                "is_enabled": false,
+                "global_cooldown_seconds": 0
+            },
+            "is_paused": false,
+            "is_in_stock": false,
+            "default_image": {
+                "url_1x": "https://static-cdn.jtvnw.net/custom-reward-images/default-1.png",
+                "url_2x": "https://static-cdn.jtvnw.net/custom-reward-images/default-2.png",
+                "url_4x": "https://static-cdn.jtvnw.net/custom-reward-images/default-4.png"
+            },
+            "should_redemptions_skip_request_queue": false,
+            "redemptions_redeemed_current_stream": null,
+            "cooldown_expires_at": null
+        },
+        {
+            "broadcaster_name": "Cazgem",
+            "broadcaster_id": "46332253",
+            "id": "2185dbf4-feac-4250-81c5-75debe2248e2",
+            "image": null,
+            "background_color": "#FF6666",
+            "is_enabled": true,
+            "cost": 1500,
+            "title": "Drink!",
+            "prompt": "",
+            "is_user_input_required": false,
+            "max_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_stream": 0
+            },
+            "max_per_user_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_user_per_stream": 0
+            },
+            "global_cooldown_setting": {
+                "is_enabled": false,
+                "global_cooldown_seconds": 900
+            },
+            "is_paused": false,
+            "is_in_stock": true,
+            "default_image": {
+                "url_1x": "https://static-cdn.jtvnw.net/custom-reward-images/default-1.png",
+                "url_2x": "https://static-cdn.jtvnw.net/custom-reward-images/default-2.png",
+                "url_4x": "https://static-cdn.jtvnw.net/custom-reward-images/default-4.png"
+            },
+            "should_redemptions_skip_request_queue": false,
+            "redemptions_redeemed_current_stream": null,
+            "cooldown_expires_at": null
+        },
+        {
+            "broadcaster_name": "Cazgem",
+            "broadcaster_id": "46332253",
+            "id": "3535f36f-d8db-4f60-8e5e-dd3c2c395e91",
+            "image": null,
+            "background_color": "#616161",
+            "is_enabled": true,
+            "cost": 1000,
+            "title": "C:S - Adopt a Street",
+            "prompt": "Name a small road (1-2 units wide) anything you please! ",
+            "is_user_input_required": true,
+            "max_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_stream": 0
+            },
+            "max_per_user_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_user_per_stream": 0
+            },
+            "global_cooldown_setting": {
+                "is_enabled": false,
+                "global_cooldown_seconds": 0
+            },
+            "is_paused": true,
+            "is_in_stock": true,
+            "default_image": {
+                "url_1x": "https://static-cdn.jtvnw.net/custom-reward-images/default-1.png",
+                "url_2x": "https://static-cdn.jtvnw.net/custom-reward-images/default-2.png",
+                "url_4x": "https://static-cdn.jtvnw.net/custom-reward-images/default-4.png"
+            },
+            "should_redemptions_skip_request_queue": false,
+            "redemptions_redeemed_current_stream": null,
+            "cooldown_expires_at": null
+        },
+        {
+            "broadcaster_name": "Cazgem",
+            "broadcaster_id": "46332253",
+            "id": "37c90f66-18c6-4455-9341-5dc9c9624778",
+            "image": null,
+            "background_color": "#FFFBFD",
+            "is_enabled": false,
+            "cost": 500,
+            "title": "C:S Let It Snow",
+            "prompt": "Change the map theme to a winter wonderland!",
+            "is_user_input_required": false,
+            "max_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_stream": 0
+            },
+            "max_per_user_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_user_per_stream": 0
+            },
+            "global_cooldown_setting": {
+                "is_enabled": false,
+                "global_cooldown_seconds": 0
+            },
+            "is_paused": true,
+            "is_in_stock": true,
+            "default_image": {
+                "url_1x": "https://static-cdn.jtvnw.net/custom-reward-images/default-1.png",
+                "url_2x": "https://static-cdn.jtvnw.net/custom-reward-images/default-2.png",
+                "url_4x": "https://static-cdn.jtvnw.net/custom-reward-images/default-4.png"
+            },
+            "should_redemptions_skip_request_queue": false,
+            "redemptions_redeemed_current_stream": null,
+            "cooldown_expires_at": null
+        },
+        {
+            "broadcaster_name": "Cazgem",
+            "broadcaster_id": "46332253",
+            "id": "3e2fb761-d13a-4eae-bc05-3704397d4cd6",
+            "image": null,
+            "background_color": "#FFBF00",
+            "is_enabled": true,
+            "cost": 5000,
+            "title": "CK3 - name a Character",
+            "prompt": "You're in charge of this character! Name it and make decisions regarding it.",
+            "is_user_input_required": true,
+            "max_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_stream": 0
+            },
+            "max_per_user_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_user_per_stream": 0
+            },
+            "global_cooldown_setting": {
+                "is_enabled": false,
+                "global_cooldown_seconds": 0
+            },
+            "is_paused": true,
+            "is_in_stock": true,
+            "default_image": {
+                "url_1x": "https://static-cdn.jtvnw.net/custom-reward-images/default-1.png",
+                "url_2x": "https://static-cdn.jtvnw.net/custom-reward-images/default-2.png",
+                "url_4x": "https://static-cdn.jtvnw.net/custom-reward-images/default-4.png"
+            },
+            "should_redemptions_skip_request_queue": false,
+            "redemptions_redeemed_current_stream": null,
+            "cooldown_expires_at": null
+        },
+        {
+            "broadcaster_name": "Cazgem",
+            "broadcaster_id": "46332253",
+            "id": "4713854e-70cb-476a-a2a8-bb975e633092",
+            "image": null,
+            "background_color": "#28704C",
+            "is_enabled": false,
+            "cost": 10000,
+            "title": "Master Chief",
+            "prompt": "Master Chief Helmet will engage for a few minutes on stream.",
+            "is_user_input_required": false,
+            "max_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_stream": 0
+            },
+            "max_per_user_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_user_per_stream": 0
+            },
+            "global_cooldown_setting": {
+                "is_enabled": false,
+                "global_cooldown_seconds": 0
+            },
+            "is_paused": true,
+            "is_in_stock": true,
+            "default_image": {
+                "url_1x": "https://static-cdn.jtvnw.net/custom-reward-images/default-1.png",
+                "url_2x": "https://static-cdn.jtvnw.net/custom-reward-images/default-2.png",
+                "url_4x": "https://static-cdn.jtvnw.net/custom-reward-images/default-4.png"
+            },
+            "should_redemptions_skip_request_queue": false,
+            "redemptions_redeemed_current_stream": null,
+            "cooldown_expires_at": null
+        },
+        {
+            "broadcaster_name": "Cazgem",
+            "broadcaster_id": "46332253",
+            "id": "520e81ec-b256-4a21-b3d3-5774059b02ce",
+            "image": null,
+            "background_color": "#FAB3FF",
+            "is_enabled": true,
+            "cost": 1000,
+            "title": "Name a Province",
+            "prompt": "",
+            "is_user_input_required": true,
+            "max_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_stream": 0
+            },
+            "max_per_user_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_user_per_stream": 0
+            },
+            "global_cooldown_setting": {
+                "is_enabled": false,
+                "global_cooldown_seconds": 0
+            },
+            "is_paused": true,
+            "is_in_stock": true,
+            "default_image": {
+                "url_1x": "https://static-cdn.jtvnw.net/custom-reward-images/default-1.png",
+                "url_2x": "https://static-cdn.jtvnw.net/custom-reward-images/default-2.png",
+                "url_4x": "https://static-cdn.jtvnw.net/custom-reward-images/default-4.png"
+            },
+            "should_redemptions_skip_request_queue": false,
+            "redemptions_redeemed_current_stream": null,
+            "cooldown_expires_at": null
+        },
+        {
+            "broadcaster_name": "Cazgem",
+            "broadcaster_id": "46332253",
+            "id": "525be402-c7b5-4647-97b5-455ab7cb69cd",
+            "image": null,
+            "background_color": "#00BD73",
+            "is_enabled": false,
+            "cost": 500,
+            "title": "C:S Warmer Temperatures",
+            "prompt": "Don't like the snow? Get rid of it!",
+            "is_user_input_required": false,
+            "max_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_stream": 0
+            },
+            "max_per_user_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_user_per_stream": 0
+            },
+            "global_cooldown_setting": {
+                "is_enabled": false,
+                "global_cooldown_seconds": 0
+            },
+            "is_paused": true,
+            "is_in_stock": true,
+            "default_image": {
+                "url_1x": "https://static-cdn.jtvnw.net/custom-reward-images/default-1.png",
+                "url_2x": "https://static-cdn.jtvnw.net/custom-reward-images/default-2.png",
+                "url_4x": "https://static-cdn.jtvnw.net/custom-reward-images/default-4.png"
+            },
+            "should_redemptions_skip_request_queue": false,
+            "redemptions_redeemed_current_stream": null,
+            "cooldown_expires_at": null
+        },
+        {
+            "broadcaster_name": "Cazgem",
+            "broadcaster_id": "46332253",
+            "id": "52cbe0f7-ea53-420e-9d64-56cc02b7e6b0",
+            "image": null,
+            "background_color": "#0013A3",
+            "is_enabled": true,
+            "cost": 3000,
+            "title": "Improv!",
+            "prompt": "Get yourself a minute of Caz-Style Music improvised on the spot.",
+            "is_user_input_required": false,
+            "max_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_stream": 0
+            },
+            "max_per_user_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_user_per_stream": 0
+            },
+            "global_cooldown_setting": {
+                "is_enabled": false,
+                "global_cooldown_seconds": 0
+            },
+            "is_paused": false,
+            "is_in_stock": true,
+            "default_image": {
+                "url_1x": "https://static-cdn.jtvnw.net/custom-reward-images/default-1.png",
+                "url_2x": "https://static-cdn.jtvnw.net/custom-reward-images/default-2.png",
+                "url_4x": "https://static-cdn.jtvnw.net/custom-reward-images/default-4.png"
+            },
+            "should_redemptions_skip_request_queue": false,
+            "redemptions_redeemed_current_stream": null,
+            "cooldown_expires_at": null
+        },
+        {
+            "broadcaster_name": "Cazgem",
+            "broadcaster_id": "46332253",
+            "id": "5321860b-adad-4c7a-ba34-53a35efce3f4",
+            "image": null,
+            "background_color": "#FFBF00",
+            "is_enabled": false,
+            "cost": 2000,
+            "title": "C:S - Change Radio Station",
+            "prompt": "Choices Available:\nDowntown Radio\nDefault\nClassics\nMars Radio",
+            "is_user_input_required": true,
+            "max_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_stream": 0
+            },
+            "max_per_user_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_user_per_stream": 0
+            },
+            "global_cooldown_setting": {
+                "is_enabled": false,
+                "global_cooldown_seconds": 0
+            },
+            "is_paused": true,
+            "is_in_stock": true,
+            "default_image": {
+                "url_1x": "https://static-cdn.jtvnw.net/custom-reward-images/default-1.png",
+                "url_2x": "https://static-cdn.jtvnw.net/custom-reward-images/default-2.png",
+                "url_4x": "https://static-cdn.jtvnw.net/custom-reward-images/default-4.png"
+            },
+            "should_redemptions_skip_request_queue": false,
+            "redemptions_redeemed_current_stream": null,
+            "cooldown_expires_at": null
+        },
+        {
+            "broadcaster_name": "Cazgem",
+            "broadcaster_id": "46332253",
+            "id": "56aa0ba4-8446-47b0-a07e-623ec71bfc92",
+            "image": null,
+            "background_color": "#9147FF",
+            "is_enabled": false,
+            "cost": 50,
+            "title": "C:S - Traffic Game Entry",
+            "prompt": "What Percentage?",
+            "is_user_input_required": true,
+            "max_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_stream": 0
+            },
+            "max_per_user_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_user_per_stream": 0
+            },
+            "global_cooldown_setting": {
+                "is_enabled": false,
+                "global_cooldown_seconds": 0
+            },
+            "is_paused": true,
+            "is_in_stock": true,
+            "default_image": {
+                "url_1x": "https://static-cdn.jtvnw.net/custom-reward-images/default-1.png",
+                "url_2x": "https://static-cdn.jtvnw.net/custom-reward-images/default-2.png",
+                "url_4x": "https://static-cdn.jtvnw.net/custom-reward-images/default-4.png"
+            },
+            "should_redemptions_skip_request_queue": false,
+            "redemptions_redeemed_current_stream": null,
+            "cooldown_expires_at": null
+        },
+        {
+            "broadcaster_name": "Cazgem",
+            "broadcaster_id": "46332253",
+            "id": "68f28aca-068b-4145-9df5-bcb9709225b7",
+            "image": null,
+            "background_color": "#FFFFFF",
+            "is_enabled": true,
+            "cost": 1000,
+            "title": "Cazgem News Headline",
+            "prompt": "Type Your Headline for the CazNews ticker here!",
+            "is_user_input_required": true,
+            "max_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_stream": 0
+            },
+            "max_per_user_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_user_per_stream": 0
+            },
+            "global_cooldown_setting": {
+                "is_enabled": false,
+                "global_cooldown_seconds": 0
+            },
+            "is_paused": false,
+            "is_in_stock": true,
+            "default_image": {
+                "url_1x": "https://static-cdn.jtvnw.net/custom-reward-images/default-1.png",
+                "url_2x": "https://static-cdn.jtvnw.net/custom-reward-images/default-2.png",
+                "url_4x": "https://static-cdn.jtvnw.net/custom-reward-images/default-4.png"
+            },
+            "should_redemptions_skip_request_queue": false,
+            "redemptions_redeemed_current_stream": null,
+            "cooldown_expires_at": null
+        },
+        {
+            "broadcaster_name": "Cazgem",
+            "broadcaster_id": "46332253",
+            "id": "7456455f-a17b-40c0-97db-daae2126e1cf",
+            "image": null,
+            "background_color": "#0013A3",
+            "is_enabled": true,
+            "cost": 1000,
+            "title": "Ride a Transport Line",
+            "prompt": "",
+            "is_user_input_required": false,
+            "max_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_stream": 0
+            },
+            "max_per_user_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_user_per_stream": 0
+            },
+            "global_cooldown_setting": {
+                "is_enabled": false,
+                "global_cooldown_seconds": 0
+            },
+            "is_paused": true,
+            "is_in_stock": true,
+            "default_image": {
+                "url_1x": "https://static-cdn.jtvnw.net/custom-reward-images/default-1.png",
+                "url_2x": "https://static-cdn.jtvnw.net/custom-reward-images/default-2.png",
+                "url_4x": "https://static-cdn.jtvnw.net/custom-reward-images/default-4.png"
+            },
+            "should_redemptions_skip_request_queue": false,
+            "redemptions_redeemed_current_stream": null,
+            "cooldown_expires_at": null
+        },
+        {
+            "broadcaster_name": "Cazgem",
+            "broadcaster_id": "46332253",
+            "id": "7632f5f4-25cb-4b3a-9c5a-bd3d016869aa",
+            "image": null,
+            "background_color": "#9147FF",
+            "is_enabled": true,
+            "cost": 2500,
+            "title": "C:S - Name a Transport Line",
+            "prompt": "",
+            "is_user_input_required": false,
+            "max_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_stream": 0
+            },
+            "max_per_user_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_user_per_stream": 0
+            },
+            "global_cooldown_setting": {
+                "is_enabled": false,
+                "global_cooldown_seconds": 0
+            },
+            "is_paused": true,
+            "is_in_stock": true,
+            "default_image": {
+                "url_1x": "https://static-cdn.jtvnw.net/custom-reward-images/default-1.png",
+                "url_2x": "https://static-cdn.jtvnw.net/custom-reward-images/default-2.png",
+                "url_4x": "https://static-cdn.jtvnw.net/custom-reward-images/default-4.png"
+            },
+            "should_redemptions_skip_request_queue": false,
+            "redemptions_redeemed_current_stream": null,
+            "cooldown_expires_at": null
+        },
+        {
+            "broadcaster_name": "Cazgem",
+            "broadcaster_id": "46332253",
+            "id": "81554b5e-b05a-4266-ac2a-96a5a14ad131",
+            "image": null,
+            "background_color": "#222222",
+            "is_enabled": true,
+            "cost": 3000,
+            "title": "C:S - Rename a Highway",
+            "prompt": "Pick a Highway and Name it anything you'd like!",
+            "is_user_input_required": true,
+            "max_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_stream": 0
+            },
+            "max_per_user_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_user_per_stream": 0
+            },
+            "global_cooldown_setting": {
+                "is_enabled": false,
+                "global_cooldown_seconds": 0
+            },
+            "is_paused": true,
+            "is_in_stock": true,
+            "default_image": {
+                "url_1x": "https://static-cdn.jtvnw.net/custom-reward-images/default-1.png",
+                "url_2x": "https://static-cdn.jtvnw.net/custom-reward-images/default-2.png",
+                "url_4x": "https://static-cdn.jtvnw.net/custom-reward-images/default-4.png"
+            },
+            "should_redemptions_skip_request_queue": false,
+            "redemptions_redeemed_current_stream": null,
+            "cooldown_expires_at": null
+        },
+        {
+            "broadcaster_name": "Cazgem",
+            "broadcaster_id": "46332253",
+            "id": "94976e7f-76cf-495a-9f13-1d2a8a6f5240",
+            "image": null,
+            "background_color": "#C51616",
+            "is_enabled": true,
+            "cost": 2000,
+            "title": "Call For A Traffic Game",
+            "prompt": "",
+            "is_user_input_required": false,
+            "max_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_stream": 0
+            },
+            "max_per_user_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_user_per_stream": 0
+            },
+            "global_cooldown_setting": {
+                "is_enabled": true,
+                "global_cooldown_seconds": 1800
+            },
+            "is_paused": true,
+            "is_in_stock": true,
+            "default_image": {
+                "url_1x": "https://static-cdn.jtvnw.net/custom-reward-images/default-1.png",
+                "url_2x": "https://static-cdn.jtvnw.net/custom-reward-images/default-2.png",
+                "url_4x": "https://static-cdn.jtvnw.net/custom-reward-images/default-4.png"
+            },
+            "should_redemptions_skip_request_queue": false,
+            "redemptions_redeemed_current_stream": null,
+            "cooldown_expires_at": "2020-11-12T17:51:16Z"
+        },
+        {
+            "broadcaster_name": "Cazgem",
+            "broadcaster_id": "46332253",
+            "id": "9615b2cd-02c1-444e-a392-2bf400979bb4",
+            "image": null,
+            "background_color": "#2F00B4",
+            "is_enabled": true,
+            "cost": 750,
+            "title": "C:S - Name a Building",
+            "prompt": "Pick a regular building you like, and name it what you please! We'll make sure it's marked as historic so it is around for a good long while.",
+            "is_user_input_required": true,
+            "max_per_stream_setting": {
+                "is_enabled": true,
+                "max_per_stream": 1500
+            },
+            "max_per_user_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_user_per_stream": 0
+            },
+            "global_cooldown_setting": {
+                "is_enabled": false,
+                "global_cooldown_seconds": 0
+            },
+            "is_paused": true,
+            "is_in_stock": false,
+            "default_image": {
+                "url_1x": "https://static-cdn.jtvnw.net/custom-reward-images/default-1.png",
+                "url_2x": "https://static-cdn.jtvnw.net/custom-reward-images/default-2.png",
+                "url_4x": "https://static-cdn.jtvnw.net/custom-reward-images/default-4.png"
+            },
+            "should_redemptions_skip_request_queue": false,
+            "redemptions_redeemed_current_stream": null,
+            "cooldown_expires_at": null
+        },
+        {
+            "broadcaster_name": "Cazgem",
+            "broadcaster_id": "46332253",
+            "id": "a21ab8f0-a00b-4610-beca-deb2e9d6cfbf",
+            "image": null,
+            "background_color": "#00E61F",
+            "is_enabled": false,
+            "cost": 500,
+            "title": "C:S - Move In!",
+            "prompt": "Name a citizen and we can watch them grow, flourish, and hopefully live a long and prosperous life in our city.  Enter the name you'd like when you submit.",
+            "is_user_input_required": true,
+            "max_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_stream": 10
+            },
+            "max_per_user_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_user_per_stream": 0
+            },
+            "global_cooldown_setting": {
+                "is_enabled": false,
+                "global_cooldown_seconds": 0
+            },
+            "is_paused": true,
+            "is_in_stock": true,
+            "default_image": {
+                "url_1x": "https://static-cdn.jtvnw.net/custom-reward-images/default-1.png",
+                "url_2x": "https://static-cdn.jtvnw.net/custom-reward-images/default-2.png",
+                "url_4x": "https://static-cdn.jtvnw.net/custom-reward-images/default-4.png"
+            },
+            "should_redemptions_skip_request_queue": false,
+            "redemptions_redeemed_current_stream": null,
+            "cooldown_expires_at": null
+        },
+        {
+            "broadcaster_name": "Cazgem",
+            "broadcaster_id": "46332253",
+            "id": "b207fdd5-6ae4-4578-88e2-6f1243b8dc4b",
+            "image": null,
+            "background_color": "#4D009C",
+            "is_enabled": true,
+            "cost": 3000,
+            "title": "C:S - Name a Unique Building",
+            "prompt": "Name a Unique Building, any size or shape, in your honor or something similar written in the message box.",
+            "is_user_input_required": true,
+            "max_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_stream": 0
+            },
+            "max_per_user_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_user_per_stream": 0
+            },
+            "global_cooldown_setting": {
+                "is_enabled": false,
+                "global_cooldown_seconds": 0
+            },
+            "is_paused": true,
+            "is_in_stock": true,
+            "default_image": {
+                "url_1x": "https://static-cdn.jtvnw.net/custom-reward-images/default-1.png",
+                "url_2x": "https://static-cdn.jtvnw.net/custom-reward-images/default-2.png",
+                "url_4x": "https://static-cdn.jtvnw.net/custom-reward-images/default-4.png"
+            },
+            "should_redemptions_skip_request_queue": false,
+            "redemptions_redeemed_current_stream": null,
+            "cooldown_expires_at": null
+        },
+        {
+            "broadcaster_name": "Cazgem",
+            "broadcaster_id": "46332253",
+            "id": "b83c3274-3cc7-477e-9b73-db0fa5cc7d41",
+            "image": null,
+            "background_color": "#FF6666",
+            "is_enabled": true,
+            "cost": 3000,
+            "title": "Name a Kingdom",
+            "prompt": "",
+            "is_user_input_required": true,
+            "max_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_stream": 0
+            },
+            "max_per_user_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_user_per_stream": 0
+            },
+            "global_cooldown_setting": {
+                "is_enabled": false,
+                "global_cooldown_seconds": 0
+            },
+            "is_paused": true,
+            "is_in_stock": true,
+            "default_image": {
+                "url_1x": "https://static-cdn.jtvnw.net/custom-reward-images/default-1.png",
+                "url_2x": "https://static-cdn.jtvnw.net/custom-reward-images/default-2.png",
+                "url_4x": "https://static-cdn.jtvnw.net/custom-reward-images/default-4.png"
+            },
+            "should_redemptions_skip_request_queue": false,
+            "redemptions_redeemed_current_stream": null,
+            "cooldown_expires_at": null
+        },
+        {
+            "broadcaster_name": "Cazgem",
+            "broadcaster_id": "46332253",
+            "id": "c9a0a32c-5fe6-4c29-98d7-3afa93b1a57d",
+            "image": null,
+            "background_color": "#00C7AC",
+            "is_enabled": true,
+            "cost": 1000,
+            "title": "Name a Colonist",
+            "prompt": "After You!",
+            "is_user_input_required": false,
+            "max_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_stream": 0
+            },
+            "max_per_user_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_user_per_stream": 0
+            },
+            "global_cooldown_setting": {
+                "is_enabled": false,
+                "global_cooldown_seconds": 0
+            },
+            "is_paused": false,
+            "is_in_stock": true,
+            "default_image": {
+                "url_1x": "https://static-cdn.jtvnw.net/custom-reward-images/default-1.png",
+                "url_2x": "https://static-cdn.jtvnw.net/custom-reward-images/default-2.png",
+                "url_4x": "https://static-cdn.jtvnw.net/custom-reward-images/default-4.png"
+            },
+            "should_redemptions_skip_request_queue": false,
+            "redemptions_redeemed_current_stream": null,
+            "cooldown_expires_at": null
+        },
+        {
+            "broadcaster_name": "Cazgem",
+            "broadcaster_id": "46332253",
+            "id": "d06ed79d-1d82-4a67-829d-ad1593dba1b1",
+            "image": null,
+            "background_color": "#202020",
+            "is_enabled": false,
+            "cost": 5000,
+            "title": "C:S - Interstate Renaming",
+            "prompt": "Rename ANY previously unchanged two-piece highway (highways that are split).",
+            "is_user_input_required": true,
+            "max_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_stream": 0
+            },
+            "max_per_user_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_user_per_stream": 0
+            },
+            "global_cooldown_setting": {
+                "is_enabled": false,
+                "global_cooldown_seconds": 0
+            },
+            "is_paused": true,
+            "is_in_stock": true,
+            "default_image": {
+                "url_1x": "https://static-cdn.jtvnw.net/custom-reward-images/default-1.png",
+                "url_2x": "https://static-cdn.jtvnw.net/custom-reward-images/default-2.png",
+                "url_4x": "https://static-cdn.jtvnw.net/custom-reward-images/default-4.png"
+            },
+            "should_redemptions_skip_request_queue": false,
+            "redemptions_redeemed_current_stream": null,
+            "cooldown_expires_at": null
+        },
+        {
+            "broadcaster_name": "Cazgem",
+            "broadcaster_id": "46332253",
+            "id": "d3ee9141-e6ae-4561-a443-e4cd1deefa62",
+            "image": null,
+            "background_color": "#464646",
+            "is_enabled": true,
+            "cost": 2000,
+            "title": "C:S - Adopt an Avenue",
+            "prompt": "Adopt a large road or Avenue (4+ tiles wide). Name it below!",
+            "is_user_input_required": true,
+            "max_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_stream": 0
+            },
+            "max_per_user_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_user_per_stream": 0
+            },
+            "global_cooldown_setting": {
+                "is_enabled": false,
+                "global_cooldown_seconds": 0
+            },
+            "is_paused": true,
+            "is_in_stock": true,
+            "default_image": {
+                "url_1x": "https://static-cdn.jtvnw.net/custom-reward-images/default-1.png",
+                "url_2x": "https://static-cdn.jtvnw.net/custom-reward-images/default-2.png",
+                "url_4x": "https://static-cdn.jtvnw.net/custom-reward-images/default-4.png"
+            },
+            "should_redemptions_skip_request_queue": false,
+            "redemptions_redeemed_current_stream": null,
+            "cooldown_expires_at": null
+        },
+        {
+            "broadcaster_name": "Cazgem",
+            "broadcaster_id": "46332253",
+            "id": "eabf19fe-6288-4efa-8b81-1a72ad3a734d",
+            "image": null,
+            "background_color": "#8205B3",
+            "is_enabled": true,
+            "cost": 500,
+            "title": "Posture Check!",
+            "prompt": "",
+            "is_user_input_required": false,
+            "max_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_stream": 0
+            },
+            "max_per_user_per_stream_setting": {
+                "is_enabled": false,
+                "max_per_user_per_stream": 0
+            },
+            "global_cooldown_setting": {
+                "is_enabled": false,
+                "global_cooldown_seconds": 0
+            },
+            "is_paused": false,
+            "is_in_stock": true,
+            "default_image": {
+                "url_1x": "https://static-cdn.jtvnw.net/custom-reward-images/default-1.png",
+                "url_2x": "https://static-cdn.jtvnw.net/custom-reward-images/default-2.png",
+                "url_4x": "https://static-cdn.jtvnw.net/custom-reward-images/default-4.png"
+            },
+            "should_redemptions_skip_request_queue": false,
+            "redemptions_redeemed_current_stream": null,
+            "cooldown_expires_at": null
+        }
+    ]
+}
